@@ -1,4 +1,4 @@
-import React, {useState, useFffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import Video from '../Video';
 import Playlist from '../containers/Playlist';
@@ -27,7 +27,7 @@ const themeLight = {
 
 
 //Tutorial used WbnPlayer (author) I'm replacing with VidPlayer for clarity
-const VidPlayer = props => {
+const VidPlayer = ({ match, history, location }) => {
 
 	const videos = JSON.parse(document.querySelector('[name="videos"]').value);
 
@@ -38,6 +38,29 @@ const VidPlayer = props => {
 		playlistId: videos.playlistId,
 		autoplay: false,
 	});
+
+	useEffect(() => {
+		localStorage.setItem(`${state.playlistId}`, JSON.stringify({ ...state }));
+	}, [state]);
+
+	useEffect(() => {
+		const videoId = match.params.activeVideo;
+		if (videoId !== undefined) {
+			const newActiveVideo = state.videos.findIndex(
+				video => video.id === videoId,
+				);
+				setState(prev => ({
+					...prev,
+					activeVideo: prev.videos[newActiveVideo],
+					autoplay: location.autoplay,
+				}));
+		} else {
+			history.push({
+				pathname: `/${state.activeVideo.id}`,
+				autoplay: false,
+			});
+		}
+	}, [history, location.autoplay, match.params.activeVideo, state.activeVideo.id, state.videos]);
 
 	const nightModeCallback = () => {
 
