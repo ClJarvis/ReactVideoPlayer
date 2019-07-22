@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledNightmode from '../styles/StyledNightmode';
+import StyledNightmode from './styles/StyledNightmode';
 
 //Tutorial used WbnPlayer (author) I'm repalcing with VidPlayer for clarity
 const NightMode = ({ nightModeCallback, nightMode}) => (
@@ -12,4 +12,4 @@ const NightMode = ({ nightModeCallback, nightMode}) => (
 		</StyledNightmode>
 	)
 
-export default Nightmode;
+export default NightMode;

@@ -1,14 +1,14 @@
 import React from 'react';
-import StyledPlaylistHeader from '../styles/StyledPlaylistHeader';
-import StyledJourney from '../styles/StyledJourney';
+import StyledPlaylistHeader from './styles/StyledPlaylistHeader';
+import StyledJourney from './styles/StyledJourney';
 
-const PlayListHeader = ({ active, total }) => (
-		<StyledPlaylistHeader>
-			<P>{active.title}</p>
+const PlaylistHeader = ({ active, total }) => (
+		<StyledPlaylistHeader>	
+			<p>{active.title}</p>
 			<StyledJourney>
 				{active.num} / {total}
-			</StyledJourney			
+			</StyledJourney>			
 		</StyledPlaylistHeader>
 )
 
-export default PlayListHeader;
+export default PlaylistHeader;

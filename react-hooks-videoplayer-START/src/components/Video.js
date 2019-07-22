@@ -4,7 +4,7 @@ import StyledVideoWrapper from './styles/StyledVideoWrapper';
 import StyledVideo from './styles/StyledVideo';
 
 //Tutorial used WbnPlayer ( author) I'm repalcing with VidPlayer for clarity
-const Video = props => (
+const Video = ({ active, autoplay, endCallback, progessCallback }) => (
 		<StyledVideo>
 			<StyledVideoWrapper>
 				<ReactPlayer
@@ -19,6 +19,6 @@ const Video = props => (
 				/>
 			</StyledVideoWrapper>
 		</StyledVideo>
-		)
+		);
 
 export default Video;
